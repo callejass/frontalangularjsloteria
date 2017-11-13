@@ -1,0 +1,13 @@
+{
+	"app": {
+		"common": {
+			"botones": {
+				"aceptar": "Ok",
+				"cancelar": "Cancel"
+			},
+			"pie": {
+				"pie": "Page footer"
+			}
+		}
+	}
+}

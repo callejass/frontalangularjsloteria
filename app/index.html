@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="LotoApp">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1">
+	<title>MiPruebaApp</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- build:CSS -->
+	<link rel="stylesheet" type="text/css" href="../app/css/style.css">
+	<!-- endbuild -->
+
+</head>
+
+<body ng-cloak class="ng-scope">
+	<div id="appContent" class="container">
+		<app-header></app-header>
+		<div ui-view></div>
+		<app-footer></app-footer>
+	</div>
+	<!-- Inicio -->
+	<!-- Nota: borra esta referencia cuando tengas ya tu proyecto -->
+	<!--<div>
+		<h6>Para descargarte un ejemplo basado en componentes consulta la <a ng-href="http://confluence.caser.local/display/AT/Pautas+de+desarrollo+para+aplicaciones+en+Angular">guia publicada en Confluence</a>
+		</h6>
+	</div>-->
+	<!-- Fin -->
+
+	<!--vendors-->
+	<script src="../bower_components/angular/angular.min.js"></script>
+	<script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="../bower_components/angular-loading-overlay/dist/angular-loading-overlay.js"></script>
+	<!-- <script src="../bower_components/angular-translate/angular-translate.min.js"></script>
+	<script src="../bower_components/angular-translate-loader-partial/angular-translate-loader-partial.min.js"></script>
+	<script src="../bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script> -->
+	<!--framework-->
+
+	<!-- build:JS -->
+
+
+	<script src="app.js"></script>
+	<script src="config.js"></script>
+
+	<script src="../modules/principal/principal.module.js"></script>
+	<script src="../modules/principal/interceptors/settoken.interceptor.js"></script>	
+	<script src="../modules/principal/components/home/home.component.js"></script>
+	<script src="../modules/principal/components/premios/premios.component.js"></script>
+	<script src="../modules/principal/components/login/login.component.js"></script>
+	<script src="../modules/principal/services/backoffice.service.js"></script>
+	<script src="../modules/principal/services/principal.factory.js"></script>
+
+	<!-- <script src="../modules/principal/common.module.js"></script> -->
+	<script src="../modules/principal/shared/footer/footer.component.js"></script>
+	<script src="../modules/principal/shared/header/header.component.js"></script>
+
+
+	<!-- endbuild -->
+
+</body>
+
+</html>

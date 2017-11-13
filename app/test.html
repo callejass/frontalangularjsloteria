@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Search timer example angular</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+</head>
+<body ng-app="clickExample">
+<div ng-controller="ExampleController">
+   Search: <input type="text" ng-model="text" ng-keyup="search(text)"  debounce="500" /><br />
+    <p>{{nuevoContacto.name}}{{nuevoContacto.id}}{{nuevoContacto.phone}}</p>
+</div>
+<script>
+    var app = angular.module("clickExample", []);
+    app.controller('ExampleController', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
+
+        var delay = 1000;
+        $scope.timer = false;
+        $scope.nuevoContacto = {};
+
+        function searchContacts(txt) {
+            if (txt.length >= 4) {
+                $http.get("http://jsonplaceholder.typicode.com/users?username=Bret").success(function (response) {
+
+                    if (response.length > 0) {
+                         $scope.nuevoContacto = response[0];
+                    }
+                    else {
+                        $scope.nuevoContacto = {};
+                    }
+                }).error(function (response) {
+                    console.error(response);
+                });
+            }
+            else if (txt.length > 2) {
+                $scope.nuevoContacto = true;
+            }
+        }
+
+
+        function initSearchTimer (txt){
+            var txt = txt;
+            $scope.timer = $timeout(function () {
+                searchContacts(txt);
+            }, delay);
+        }
+
+        $scope.search = function (txt) {
+            if ($scope.timer) {
+                $timeout.cancel($scope.timer)
+            }
+            initSearchTimer(txt);
+        };
+
+    }]);
+</script>
+</body>
+</html>

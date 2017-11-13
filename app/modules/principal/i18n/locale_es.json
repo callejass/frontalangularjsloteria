@@ -1,0 +1,9 @@
+{
+	"app": {		
+		"principal": {
+			"home": {
+				"home": "Página principal de la aplicación {{nombre}}"
+			}
+		}
+	}
+}

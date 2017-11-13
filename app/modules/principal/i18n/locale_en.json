@@ -1,0 +1,9 @@
+{
+	"app": {		
+		"principal": {
+			"home": {
+				"home": "Home page of {{nombre}}"
+			}
+		}
+	}
+}

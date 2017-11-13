@@ -1,0 +1,18 @@
+{
+	"app": {
+		"common": {
+			"botones": {
+				"aceptar": "Aceptar",
+				"cancelar": "Cancelar"
+			},
+			"pie":{
+				"pie":"Este es el pie de la página"
+			}
+		},
+		"principal": {
+			"home": {
+				"home": "Página principal"
+			}
+		}
+	}
+}
