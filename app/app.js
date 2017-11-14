@@ -13,13 +13,13 @@ angular.module('LotoApp').config(["$stateProvider","$urlRouterProvider",function
     });
 
     $stateProvider.state('premios', {
-        data:{ needautentication:true },
+        data:{ needautentication:false },
         url: "/premios",
         component: "premios"
         //templateUrl: path + 'login/loginview.html',
     });
     $stateProvider.state('misdecimos', {
-        data:{needautentication:true},
+        data:{needautentication:false},
         url: "/misdecimos",
         component: "misdecimos"
         //templateUrl: path + 'login/loginview.html',
@@ -43,7 +43,7 @@ angular.module('LotoApp').config(["$stateProvider","$urlRouterProvider",function
     });
 
     $stateProvider.state('home', {
-        data:{needautentication:true},
+        data:{needautentication:false},
         url: "/",
         component: "home"
     });

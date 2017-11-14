@@ -3,14 +3,42 @@ angular.module("LotoApp.principal").service("backoffice", ["APP_CONFIG", "$http"
     var servicio = this;
     angular.extend(servicio, {
         getPremiosPrincipales: getPremiosPrincipales,
-        sendLogin:sendLogin
+        sendLogin:sendLogin,
+        registrar:registrar,
+        getDecimos:getDecimos
     });
 
+
+    /**recupera los premios principales del sorteo */
 
     function getPremiosPrincipales() {
         var url = configuracion.servicesUrl + "/consultas/principales";
         return $http.get(url, { cache: true });
     }
+    function getPremio(numero){
+        var url = configuracion.servicesUrl + "/consultas/" + numero;
+        return $http.get(url, { cache: true });
+    }
+    function getDecimos(){
+        var url=configuracion.servicesUrl + "/jugadas";
+        return $http.get(url,{cache:false});
+    }
+
+    
+    /**registra un usuario */
+    function registrar(usuario,password){
+        var url=configuracion.servicesUrl + "/registrar";
+        var obj={user:usuario,password:password};
+        return $http.post(url, obj,
+            {
+                cache: false,
+                headers: [{ "Content-Type": "application/json" }]
+            }); 
+    }
+
+    /**
+     * envia los datos para hacer login
+     */
     function sendLogin(usuario,password) {
         var url=configuracion.servicesUrl + "/autenticar"
         var obj={user:usuario,password:password};
@@ -19,27 +47,8 @@ angular.module("LotoApp.principal").service("backoffice", ["APP_CONFIG", "$http"
             {
                 cache: false,
                 headers: [{ "Content-Type": "application/json" }]
-            });/* then(
-            function (response) {
-                //debugger;
-                if (response.status == 200) {
-                    deferer.resolve({ usuario: usuario, password: password, token: response.data.token });
-                } else {
-                    //alert("OK:" + JSON.stringify(response));                            
-                    deferer.reject(response);
-                }
-            },
-            function (response) {
-                //debugger;
-                //alert("ERROR:" +JSON.stringify(response));                        
-                deferer.reject(response);
-            }
-            )
-            .catch(function (response) {
-                //debugger;
-                //alert("catch:" + response);
-                deferer.reject(response);
-            }); */
+            });
     }
+
 
 }]);
