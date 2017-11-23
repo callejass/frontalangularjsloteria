@@ -1,6 +1,6 @@
 angular.module("LotoApp.principal").component('appFooter',
     {
-        templateUrl: 'modules/principal/shared/footer/footer.tpl.html',
+        templateUrl: 'modules/principal/components/footer/footer.tpl.html',
         controllerAs: 'vm',
         controller: ['$log','APP_CONFIG', footerController]
     });

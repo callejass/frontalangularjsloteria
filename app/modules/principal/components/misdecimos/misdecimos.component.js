@@ -14,10 +14,11 @@ function misdecimosController(backoffice, bsLoadingOverlayService) {
         $onInit: $onInit,
         active:0
 
+
     })
 
     function $onInit() {
-        loadDecimos();
+        //loadDecimos();
     }
 
 

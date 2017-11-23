@@ -4,10 +4,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=11,chrome=1">
-	<title>MiPruebaApp</title>
+	<title>Lotería de Navidad 2017</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-
 	<link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<!-- build:CSS -->
 	<link rel="stylesheet" type="text/css" href="../app/css/style.css">
@@ -16,19 +15,14 @@
 </head>
 
 <body>
+	<!-- Inicio-->
 	<div bs-loading-overlay>
 		<app-header></app-header>
 		<div id="appContent" class="container">
 			<div ui-view></div>
 			<app-footer></app-footer>
 		</div>
-	</div>
-	<!-- Inicio -->
-	<!-- Nota: borra esta referencia cuando tengas ya tu proyecto -->
-	<!--<div>
-		<h6>Para descargarte un ejemplo basado en componentes consulta la <a ng-href="http://confluence.caser.local/display/AT/Pautas+de+desarrollo+para+aplicaciones+en+Angular">guia publicada en Confluence</a>
-		</h6>
-	</div>-->
+	</div>	
 	<!-- Fin -->
 
 	<!--vendors-->
@@ -39,12 +33,7 @@
 	<script src="../bower_components/angular-loading-overlay/dist/angular-loading-overlay.js"></script>
 	<script src="../bower_components/angular-loading-overlay-spinjs/dist/angular-loading-overlay-spinjs.js"></script>
 	<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-	<script src="../bower_components/angular-i18n/angular-locale_es-es.js"></script>
-	<!-- <script src="../bower_components/angular-translate/angular-translate.min.js"></script>
-	<script src="../bower_components/angular-translate-loader-partial/angular-translate-loader-partial.min.js"></script>
-	<script src="../bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script> -->
-	<!--framework-->
-
+	<script src="../bower_components/angular-i18n/angular-locale_es-es.js"></script>	
 	<!-- build:JS -->
 
 
@@ -60,6 +49,9 @@
 	<script src="../modules/principal/components/premios/premios.component.js"></script>
 	<script src="../modules/principal/components/premios/premio/premio.component.js"></script>
 	<script src="../modules/principal/components/misdecimos/misdecimos.component.js"></script>
+	<script src="../modules/principal/components/misdecimos/admin/index.component.js"></script>
+	<script src="../modules/principal/components/misdecimos/admin/listado.component.js"></script>
+	<script src="../modules/principal/components/misdecimos/admin/detalle.component.js"></script>
 	<script src="../modules/principal/components/misdecimos/decimo/decimo.component.js"></script>
 
 	<script src="../modules/principal/filters/premioprincipal.filter.js"></script>
@@ -69,8 +61,11 @@
 
 	<!-- <script src="../modules/principal/common.module.js"></script> -->
 
-	<script src="../modules/principal/shared/header/header.component.js"></script>
-	<script src="../modules/principal/shared/footer/footer.component.js"></script>
+	<script src="../modules/principal/components/header/header.component.js"></script>
+	<script src="../modules/principal/components/footer/footer.component.js"></script>
+
+
+	<script src="../modules/principal/shared/campo/campo.component.js"></script>
 
 	<!-- endbuild -->
 

@@ -56,3 +56,7 @@ typings/
 
 # dotenv environment variables file
 .env
+# directorio temporal
+/tmp
+# directorio de generacion www
+/www

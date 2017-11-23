@@ -1,6 +1,6 @@
 angular.module("LotoApp.principal").component('appHeader',
     {
-        templateUrl: 'modules/principal/shared/header/header.tpl.html',
+        templateUrl: 'modules/principal/components/header/header.tpl.html',
         controllerAs: 'vm',
         controller: ['$log','APP_CONFIG','principal','$state', headerController]
     });

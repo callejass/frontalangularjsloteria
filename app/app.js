@@ -25,10 +25,10 @@ angular.module('LotoApp').config(["$stateProvider","$urlRouterProvider",function
         //templateUrl: path + 'login/loginview.html',
     });
 
-    $stateProvider.state('misdecimosadmin', {
+    $stateProvider.state('adminmisdecimos', {
         data:{needautentication:true},
         url: "/misdecimos/admin",
-        component: "misdecimosadmin"
+        component: "adminmisdecimos"
         //templateUrl: path + 'login/loginview.html',
     });
     $stateProvider.state('login', {

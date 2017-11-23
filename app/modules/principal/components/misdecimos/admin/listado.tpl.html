@@ -1,0 +1,29 @@
+<p>El listado</p>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Número</th>
+                <th>Importe</th>
+                <th>Descripción</th>                
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="decimo in vm.decimos">
+                <td>
+                    <button class="btn btn-xs btn-danger" ng-click="vm.deletedecimo(decimo._id)"><span class="glyphicon glyphicon-trash"></span></button>
+                    <button class="btn btn-xs btn-success" ng-click="vm.selectdecimo(decimo._id)"><span class="glyphicon glyphicon-pencil"></span></button>
+                </td>
+                <td>{{decimo.numero}}</td>
+                <td>{{decimo.importe | currency}}</td>
+                <td>{{decimo.descripcion}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td><button class="btn btn-xs btn-success"><span class="glyphicon glyphicon-plus"></span></button></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

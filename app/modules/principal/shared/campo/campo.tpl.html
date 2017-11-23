@@ -1,0 +1,27 @@
+<div class="form-group has-feedback" ng-class="{'has-error':vm.form[vm.name].$invalid && vm.form[vm.name].$dirty}" ng-cloak>
+    <label class="control-label sr-only" for="{{vm.name}}">
+        <agv-marcador-campo-obligatorio required="{{vm.required}}"></agv-marcador-campo-obligatorio>
+        {{vm.label}}        
+        <span ng-if="vm.help" uib-tooltip="{{vm.help}}"><i class="glyphicon glyphicon-question-sign"></i></span>
+    </label>
+    <div class="col-lg-{{vm.data.cols.text}} col-md-6 col-sm-12">
+        <div class="form-group has-feedback" ng-class="{'has-error':vm.form[vm.name].$invalid && vm.form[vm.name].$dirty,'has-success':!vm.form[vm.name].$invalid && vm.form[vm.name].$dirty}">
+            <input id="{{vm.name}}" placeholder="{{vm.label}}" class="form-control" name="{{vm.name}}" type="{{vm.type}}"
+                ng-model="vm.value" ng-required="vm.required" ng-disabled="vm.disabled" autocomplete="off" step="any" ng-model-options="{ allowInvalid: true, debounce: 500 }"/>
+            <span class="glyphicon glyphicon-exclamation-sign form-control-feedback" ng-if="vm.form[vm.name].$invalid && vm.form[vm.name].$dirty"></span>
+            <span class="glyphicon glyphicon-ok form-control-feedback" ng-if="!vm.form[vm.name].$invalid && vm.form[vm.name].$dirty"></span>                        
+            <div role="alert">
+                <span class="text-danger" ng-show="vm.ngModel.$error.required && vm.form[vm.name].$dirty">El campo {{vm.label}} es obligatorio</span>
+                <span class="text-danger" ng-show="vm.ngModel.$error.maxlength && vm.form[vm.name].$dirty">El campo {{vm.label}} no puede tener más de {{vm.maxlength}} caracteres</span>
+                <span class="text-danger" ng-show="vm.ngModel.$error.minlength && vm.form[vm.name].$dirty">El campo {{vm.label}} no puede tener menos de {{vm.minlength}} caracteres</span>                
+                <span class="text-danger" ng-show="vm.ngModel.$error.regex && vm.form[vm.name].$dirty">El campo {{vm.label}} no tiene el formato correcto</span>
+                <span class="text-danger" ng-show="vm.ngModel.$error.minimo && vm.form[vm.name].$dirty">El campo {{vm.label}} debe der mayor de {{vm.min}}</span>
+                <span class="text-danger" ng-show="vm.ngModel.$error.maximo && vm.form[vm.name].$dirty">El campo {{vm.label}} debe der menor de {{vm.max}}</span>                
+                <span class="text-danger" ng-show="vm.form[vm.name].$error.email && vm.form[vm.name].$dirty">El campo {{vm.label}} no es una dirección de mail válida</span>
+                <!--<span ng-if="vm.type=='date'" class="error" ng-show="vm.form[vm.name].$error.date">{{"agv.general.errores.date" |translate:{campo:vm.label} }}</span>-->
+                <span class="text-danger" ng-show="vm.form[vm.name].$error.number && vm.ngModel.$dirty" ng-if="vm.type=='number'">El campo {{vm.label}} debe ser numérico</span>
+            </div>
+        </div>
+    </div>
+</div>
+{{vm.ngModel.$error}}
