@@ -13,19 +13,20 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="active">
-                    <a ui-sref="premios">Premios
+                    <a ng-if="vm.principal.isAuthenticated()" ui-sref="premios" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" >Premios
                         <!--<span class="sr-only">(current)</span>-->
                     </a>
                 </li>
                 <li>
-                    <a ui-sref="misdecimos">Mis décimos</a>
+                    <a ng-if="vm.principal.isAuthenticated()" ui-sref="misdecimos" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Mis décimos</a>
                 </li>
                 <li>
-                    <a ui-sref="login">Login</a>
+                    <a ng-if="!vm.principal.isAuthenticated()" ui-sref="login" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Login</a>
                 </li>
                 <li>
-                    <a ui-sref="registro">Registrarse</a>
+                    <a ng-if="!vm.principal.isAuthenticated()" ui-sref="registro" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Registrarse</a>
                 </li>
+                <li ng-if="vm.principal.isAuthenticated()"><a ng-click="vm.salir()" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Desconectar</a></li>
 
             </ul>
         </div>

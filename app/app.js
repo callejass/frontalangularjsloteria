@@ -1,4 +1,4 @@
-angular.module('LotoApp', ['ui.router','LotoApp.principal']);
+angular.module('LotoApp', ['ui.router','LotoApp.principal','bsLoadingOverlay','bsLoadingOverlaySpinJs','ui.bootstrap']);
 
 
 angular.module('LotoApp').config(["$stateProvider","$urlRouterProvider",function ($stateProvider, $urlRouterProvider) {
@@ -50,10 +50,30 @@ angular.module('LotoApp').config(["$stateProvider","$urlRouterProvider",function
     
 }]);
 
-angular.module('LotoApp').run(["$transitions","$state","$log","principal",function ($transitions,$state,$log,principal) {
+angular.module('LotoApp').run(["$transitions","$state","$log","principal","bsLoadingOverlayService","$timeout",function ($transitions,$state,$log,principal,bsLoadingOverlayService,$timeout) {
     console.log("arrancada la aplicación");
-    debugger;
+    
     $log.debug("Arranque");
+
+    //configuramos el spinner
+    bsLoadingOverlayService.setGlobalConfig({
+        delay:500, // Minimal delay to hide loading overlay in ms.
+        activeClass: "loading", // Class that is added to the element where bs-loading-overlay is applied when the overlay is active.
+        templateUrl: "bsLoadingOverlaySpinJs",
+        templateOptions: {
+            radius: 14,
+			width: 3,
+			length: 8,
+			//lines: 5,
+			color: '#ff9933',
+            position:'absolute'
+        }//undefined // Options that are passed to overlay template (specified by templateUrl option above).
+      });
+
+      bsLoadingOverlayService.start();
+      $timeout(function(){
+        bsLoadingOverlayService.stop();
+      },300);
     $transitions.onSuccess({to:"premios"}, function(transition) {
         if(!principal.isAuthenticated()){
             return transition.router.stateService.go('login');
@@ -65,10 +85,11 @@ angular.module('LotoApp').run(["$transitions","$state","$log","principal",functi
         }
         
     });
-    if(principal.isAuthenticated()){
-        $state.go("premios");
-    }else{
+    if(!principal.isAuthenticated()){
         $state.go("home");
+       // $state.go("premios");
+    }else{
+        
     }
     /* $rootScope.$on("$stateChangeStart", function (e, to) {
         $log.debug("Cambio de estado a " + to);

@@ -1,0 +1,18 @@
+<!-- <h1>Componente Mís décimos</h1> -->
+<div class="alert alert-danger" ng-if="vm.error">
+    <span>{{vm.error}}</span>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div uib-carousel active="vm.active">
+            <div  uib-slide ng-repeat="decimo in vm.decimos track by $index" index="$index">
+                <decimo numero="decimo.numero"></decimo>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <p ng-repeat="decimo in vm.decimos">
+    {{decimo.numero}}
+</p> -->

@@ -1,8 +1,62 @@
-
+<div class="alert alert-danger" ng-if="vm.error">
+    <span>{{vm.error}}</span>
+</div>
 <div class="row">
-    <div class="col-xs-12">
-        
+    <div class="col-xs-12 text-center">
+        <h1>Primero</h1>
+        <premio numero="vm.premios.numero1" nivel="1"></premio>
     </div>
 </div>
+<hr/>
+<div class="row">
+    <div class="col-xs-6 text-center">
+        <h1>Segundo</h1>
+        <premio numero="vm.premios.numero2" nivel="2"></premio>
+    </div>
+    <div class="col-xs-6 text-center">
+        <h1>Tercero</h1>
+        <premio numero="vm.premios.numero3" nivel="3"></premio>
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-xs-12 text-center">
+        <h1>Cuartos</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-6 text-center">
+        <premio numero="vm.premios.numero4" nivel="4"></premio>
+    </div>
+    <div class="col-xs-6 text-center">
+        <premio numero="vm.premios.numero5" nivel="4"></premio>
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-xs-12 text-center">
+        <h1>Quintos</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-6 text-center">
+        <premio numero="vm.premios.numero6" nivel="5"></premio>
+        <premio numero="vm.premios.numero7" nivel="5"></premio>
+        <premio numero="vm.premios.numero8" nivel="5"></premio>
+        <premio numero="vm.premios.numero9" nivel="5"></premio>
+    </div>
+    <div class="col-xs-6 text-center">
+        <premio numero="vm.premios.numero10" nivel="5"></premio>
+        <premio numero="vm.premios.numero11" nivel="5"></premio>
+        <premio numero="vm.premios.numero12" nivel="5"></premio>
+        <premio numero="vm.premios.numero13" nivel="5"></premio>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+        <button class="btn btn-block btn-success">Refrescar</button>
+    </div>
 
-<pre>{{vm.premios |json}}</pre>
+</div>
+<!-- <pre>{{vm.premios |json}}</pre> -->

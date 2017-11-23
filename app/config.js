@@ -1,5 +1,6 @@
 angular.module('LotoApp').constant('APP_CONFIG', {
-	servicesUrl: "http://localhost:3000/api",
+	//servicesUrl: "http://192.168.1.18:3000/api",
+	servicesUrl:"https://loteria-back.appspot.com/api",
 	mocksUrl: "/api/",
 	mocks: "mocks",
 	application_id: 'MiPruebaWebapp',

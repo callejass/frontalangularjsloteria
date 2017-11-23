@@ -5,13 +5,14 @@ angular.module("LotoApp.principal").component('premios',
         }, */
         templateUrl: 'modules/principal/components/premios/premios.tpl.html',
         controllerAs: 'vm',
-        controller: ['$log', "backoffice", premiosController]
+        controller: ['$log', "backoffice","bsLoadingOverlayService", premiosController]
     });
 
-function premiosController($log,backoffice) {
+function premiosController($log,backoffice,bsLoadingOverlayService) {
     var vm = this;
     angular.extend(vm, {
         $onInit: $onInit,
+        error:null,
         premios:{}
     });
 
@@ -19,14 +20,24 @@ function premiosController($log,backoffice) {
     function $onInit() {
        // debugger;
         //$log.debug(vm.$transition$.to());
+        reload();
+        $log.debug("En el $onInit del componente premios");
+    }
+
+    function reload(){
+        vm.error=null;
+        bsLoadingOverlayService.start();
         backoffice.getPremiosPrincipales().then(
             function(response){
                 vm.premios=response.data;
             },
             function(response){
-                alert(response);
+               vm.error=response.data;// alert(response);
             }
-        );
-        $log.debug("En el $onInit del componente premios");
+        ).finally(function(){
+            bsLoadingOverlayService.stop();
+        });
     }
+
+
 }

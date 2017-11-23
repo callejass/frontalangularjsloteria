@@ -5,7 +5,8 @@ angular.module("LotoApp.principal").service("backoffice", ["APP_CONFIG", "$http"
         getPremiosPrincipales: getPremiosPrincipales,
         sendLogin:sendLogin,
         registrar:registrar,
-        getDecimos:getDecimos
+        getDecimos:getDecimos,
+        getPremio:getPremio
     });
 
 
@@ -27,7 +28,7 @@ angular.module("LotoApp.principal").service("backoffice", ["APP_CONFIG", "$http"
     
     /**registra un usuario */
     function registrar(usuario,password){
-        var url=configuracion.servicesUrl + "/registrar";
+        var url=configuracion.servicesUrl + "/usuarios";
         var obj={user:usuario,password:password};
         return $http.post(url, obj,
             {
@@ -35,7 +36,6 @@ angular.module("LotoApp.principal").service("backoffice", ["APP_CONFIG", "$http"
                 headers: [{ "Content-Type": "application/json" }]
             }); 
     }
-
     /**
      * envia los datos para hacer login
      */
