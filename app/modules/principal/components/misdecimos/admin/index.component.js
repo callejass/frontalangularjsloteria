@@ -19,6 +19,7 @@ function adminMisdecimosIndexController(backoffice, bsLoadingOverlayService) {
 
     }
     function decimoSeleccionado(value){
-        alert(value);
+        
+        vm.decimoseleccionado=value;
     }
 }

@@ -22,15 +22,16 @@ function adminMisdecimosListadoController(backoffice, bsLoadingOverlayService) {
     function $onInit() {
         //reload();
         vm.decimos=[
-            {_id:"a45f84edf88847fr",numero:1254,importe:40,descripcion:"La descripción"}
+            {_id:"a45f84edf88847fr",numero:1254,importe:40,descripcion:"La descripción"},
+            {_id:"a45f84jjjjjj847fr",numero:78536,importe:6.66,descripcion:"Dokan"},
+            {_id:"kkkkkkkkkkk",numero:142,importe:20,descripcion:"Otro"}
         ];
     }
 
     function reload() {
         bsLoadingOverlayService.start();
         backoffice.getDecimos().then(
-            function (response) {
-                
+            function (response) {                
                 vm.decimos = response.data;
             },
             function (response) {
@@ -58,9 +59,9 @@ function adminMisdecimosListadoController(backoffice, bsLoadingOverlayService) {
                 reload();
             }); 
     }
-    function selectdecimo(id){
-        alert(id);
-        vm.onSelectDecimo({value:id});
+    function selectdecimo(decimo){
+        //alert(id);
+        vm.onSelectDecimo({value:decimo});
     }
 
 }

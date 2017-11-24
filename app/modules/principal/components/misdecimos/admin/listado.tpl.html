@@ -1,4 +1,3 @@
-<p>El listado</p>
 <div class="table-responsive">
     <table class="table table-bordered">
         <thead>
@@ -13,7 +12,7 @@
             <tr ng-repeat="decimo in vm.decimos">
                 <td>
                     <button class="btn btn-xs btn-danger" ng-click="vm.deletedecimo(decimo._id)"><span class="glyphicon glyphicon-trash"></span></button>
-                    <button class="btn btn-xs btn-success" ng-click="vm.selectdecimo(decimo._id)"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <button class="btn btn-xs btn-success" ng-click="vm.selectdecimo(decimo)"><span class="glyphicon glyphicon-pencil"></span></button>
                 </td>
                 <td>{{decimo.numero}}</td>
                 <td>{{decimo.importe | currency}}</td>
@@ -22,7 +21,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td><button class="btn btn-xs btn-success"><span class="glyphicon glyphicon-plus"></span></button></td>
+                <td colspan="4"><button class="btn btn-xs btn-success" ng-click="vm.selectdecimo(null)"><span class="glyphicon glyphicon-plus"></span></button></td>
             </tr>
         </tfoot>
     </table>

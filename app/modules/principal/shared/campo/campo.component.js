@@ -4,7 +4,8 @@ angular.module("LotoApp.principal").component("campoFormulario", {
         labelcols: "@",
         name: '@',
         type: '@',
-        required: '@',
+        integer:"<",
+        required: '<',
         help: "@",
         max: "@",
         min: "@",
@@ -27,8 +28,7 @@ function agvCampoFormularioController($log, $scope, $filter) {
     var vm = this;
     angular.extend(vm, {
         $onInit: init,
-        $onChanges: onChanges,
-        //$postLink:postLink,
+        $onChanges: onChanges,        
         value: '',
         data: {
             cols: {
@@ -41,45 +41,51 @@ function agvCampoFormularioController($log, $scope, $filter) {
         datepopupopened: false,
         dateOptions: {
             showWeeks: false
-        }
+        },
+        internalchange:internalchange
 
     });
     function init() {
+
+        vm.required=!!vm.required;
+
+        vm.ngModel.$render = function () {
+            vm.value = vm.ngModel.$viewValue;
+        };
+
+
         if (vm.type === "number") {
-            //vm.ngModel.$parsers.push(formateadorMiles);
-            //    vm.ngModel.$formatters.push(formateadorNumerico);
+            vm.ngModel.$parsers.push(function(value){
+                $log.debug("en el parseador personalizado: " + value);
+                return 1*value;
+            });
         }
         if (vm.type == "text") {
-            //vm.ngModel.$formatters.push(formateadorMayusculas);
+            
         }
+
         if (vm.type == "number" && vm.max) {
-            //añado el validador   
+            //añado el validador               
             vm.ngModel.$validators.maximo = function (modelValue) {
-                return vm.value != '' ? modelValue <= vm.max : true;
+                $log.debug("Validando si " + modelValue + " es menor de " + vm.max);
+                return modelValue ? modelValue <= vm.max : true;
             }
         }
 
+        if(vm.type=="number" && vm.integer){
+            vm.ngModel.$validators.integer=function(modelValue){
+                return modelValue ? Number.isInteger(modelValue) :true
+            }
+        }
         if (vm.type == "number" && vm.min) {
             //añado el validador 
             vm.ngModel.$validators.minimo = function (modelValue) {
-                return vm.value != '' ? modelValue >= vm.min : true;
+                return modelValue? modelValue >= vm.min : true;
             }
-
-        }
-
-        /*if(vm.maxlength){
-            vm.ngModel.$validators.maxlength=function(modelValue){
-                return modelValue.length==0 || modelValue.length<=vm.maxlength;
-            }            
-        }
-        if(vm.minlength){
-            vm.ngModel.$validators.minlength=function(modelValue){
-                return modelValue.length==0 || modelValue.length>=vm.minlength;
-            }            
-        }*/
+        }        
         if (vm.regex) {
             vm.ngModel.$validators.regex = function (modelValue) {
-                if (vm.value != '') {
+                if (modelvalue) {
                     var r = new RegExp(vm.regex);
                     var valido = r.test(vm.value);
                     return valido;                    
@@ -89,29 +95,26 @@ function agvCampoFormularioController($log, $scope, $filter) {
             }            
         }
         //alert(vm.name);     
-        vm.required = vm.required !== undefined ? true : false;
+        $log.debug("Campo " + vm.label + " Es requerido:" + vm.required);
+        //vm.required = vm.required !== undefined ? true : false;
 
-        vm.ngModel.$render = function () {
+        /*vm.ngModel.$render = function () {
             vm.value = vm.ngModel.$viewValue;
-        };
-        $scope.$watch('vm.value', function (value) {
-            //$log.info("En el $$watch del modelo " + value);
-            vm.ngModel.$setViewValue(value);
-            
-        });
+        };*/
 
-        if (vm.form.firstcol !== undefined) {
-            //alert(vm.form.firstcol);
-            vm.data.cols.label = vm.form.firstcol;
-            vm.data.cols.text = 12 - vm.data.cols.label;
-        } else {
-            if (vm.labelcols !== undefined) {
-                vm.data.cols.label = vm.labelcols;
-                vm.data.cols.text = 12 - vm.labelcols;
-            }
-        }
-
+        vm.ngModel.$parse
+        /*$scope.$watch('vm.value', function (value) {          
+            vm.ngModel.$setViewValue(value);            
+        });                        */
     }
+    function internalchange(){
+        $log.debug("Pasando " + vm.value + " al ngModel");
+        vm.ngModel.$setViewValue(vm.value);        
+        //$log.debug();
+    }
+
+
+
 
     function formateadorMayusculas(value) {
         if (value) {
