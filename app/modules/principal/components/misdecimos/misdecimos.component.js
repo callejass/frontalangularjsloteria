@@ -1,5 +1,5 @@
 angular.module("LotoApp.principal").component("misdecimos", {
-    templateUrl: "modules/principal/components/misdecimos/misdecimos.todos.tpl.html",
+    templateUrl: "modules/principal/components/misdecimos/misdecimos.carrusel.tpl.html",
     controllerAs: "vm",
     controller: ["backoffice", "bsLoadingOverlayService", misdecimosController]
 });
@@ -12,13 +12,14 @@ function misdecimosController(backoffice, bsLoadingOverlayService) {
         decimos: [],
         error:null,
         $onInit: $onInit,
-        active:0
-
+        active:0,
+        derecha:derecha,
+        izquierda:izquierda
 
     })
 
     function $onInit() {
-        //loadDecimos();
+        loadDecimos();
     }
 
 
@@ -36,5 +37,23 @@ function misdecimosController(backoffice, bsLoadingOverlayService) {
         ).finally(function () { bsLoadingOverlayService.stop() });
     }
 
+    function derecha(){
+        
+       
+        if(vm.active>0){
+            vm.active--;
+        }else{
+            vm.active=vm.decimos.length-1;
+        }
+    }
+    function izquierda(){
+        
+        if(vm.active<vm.decimos.length-1){
+            vm.active++;
+            
+        }else{
+            vm.active=0;
+        }
+    }
 
 }

@@ -1,19 +1,44 @@
-angular.module("LotoApp.principal").service("backoffice", ["APP_CONFIG", "$http", function (configuracion, $http) {
+angular.module("LotoApp.principal").service("backoffice", ["APP_CONFIG", "$http","$q", function (configuracion, $http,$q) {
 
     var servicio = this;
     angular.extend(servicio, {
-        getPremiosPrincipales: getPremiosPrincipales,
+       
         sendLogin:sendLogin,
         registrar:registrar,
         getDecimos:getDecimos,
-        getPremio:getPremio
+        getDecimo:getDecimo,
+        updateDecimo:updateDecimo,
+        createDecimo:createDecimo,
+        deleteDecimo:deleteDecimo,
+        getPremiosPrincipales: getPremiosPrincipales,
+        getPremio:getPremio,
+        getEstadoSorteo:getEstadoSorteo
     });
 
 
 
     function getEstadoSorteo() {
-        var url = configuracion.servicesUrl + "/consultas/estado";
-        return $http.get(url, { cache: true });
+        var url1 = configuracion.servicesUrl + "/consultas/estado";
+        var url2= configuracion.servicesUrl + "/consultas/ultimaactualizacion";
+        var promesas=[];
+        promesas.push($http.get(url1, { cache: true }));
+        promesas.push($http.get(url2, { cache: true }));
+        var deferred = $q.defer();
+        $q.all(promesas).then(
+            function(values){
+                //debugger;
+                deferred.resolve({
+                    status:values[0].data.status,
+                    timestamp:values[1].data.timestamp,
+                    error:values[0].data.error + values[1].data.error                    
+                });       
+            },
+            function(values){
+                deferred.reject({mensaje:"Se produjo un error al recuperar el estado del sorteo",error:1});
+            });
+        
+        return deferred.promise;
+        //return $http.get(url, { cache: true });
     }
 
     /**recupera los premios principales del sorteo */
@@ -46,7 +71,10 @@ angular.module("LotoApp.principal").service("backoffice", ["APP_CONFIG", "$http"
         return $http.put(url,decimo);
     }
     function deleteDecimo(id){
-        var url=configuracion.servicesUrl + "/jugadas"
+        
+        var url=configuracion.servicesUrl + "/jugadas/" + id;
+        
+        return $http.delete(url);
     }
     
     /**registra un usuario */

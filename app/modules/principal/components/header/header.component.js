@@ -11,7 +11,8 @@ function headerController($log,APP_CONFIG,principal,$state) {
         $onInit:$onInit,
         constantes:APP_CONFIG,
         principal:principal,
-        salir:salir
+        salir:salir,
+        $state:$state
     });
 
 

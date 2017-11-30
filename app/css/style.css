@@ -25,11 +25,11 @@ body {
   margin-bottom:0px;
 }
 hr{
-  border-top:1px solid green;
+  border-top:1px solid rgb(2, 10, 121);
   margin-left:45px;
   margin-right:45px;
 }
-h1{
+h1{ 
   margin-top:0px;
   font-size:20px;
 }
@@ -118,4 +118,25 @@ h1{
   right:0;
   padding:0px;
   margin:0px;
+}
+
+
+ol.carousel-indicators{
+  bottom:-40px;
+}
+ol.carousel-indicators li{
+  border: 1px solid #05719B;
+}
+ol.carousel-indicators li.active{
+  background-color:#05719B;
+}
+
+.carousel-control.left , .carousel-control.right{
+  background:none;
+}
+
+.carousel-control{
+  background-color:#05719B;
+  color:#05719B;
+  bottom:-382px;
 }

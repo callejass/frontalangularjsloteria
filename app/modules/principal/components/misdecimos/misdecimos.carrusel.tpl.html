@@ -1,17 +1,17 @@
 <!-- <h1>Componente Mís décimos</h1> -->
-<div class="alert alert-danger" ng-if="vm.error">
+<estado></estado>
+<!-- <div class="alert alert-danger" ng-if="vm.error">
     <span>{{vm.error}}</span>
-</div>
+</div> -->
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-        <div uib-carousel active="vm.active">
+        <div uib-carousel active="vm.active" interval="5000" no-pause="true" >
             <div  uib-slide ng-repeat="decimo in vm.decimos track by $index" index="$index">
-                <decimo numero="decimo.numero"></decimo>
+                <decimo inputdata="decimo" ng-swipe-left="vm.izquierda()" ng-swipe-right="vm.derecha()"></decimo>
             </div>
         </div>
     </div>
 </div>
-
 
 <!-- <p ng-repeat="decimo in vm.decimos">
     {{decimo.numero}}

@@ -4,12 +4,7 @@
         <h2 ng-if="vm.decimo && vm.decimo._id">Modificar décimo</h2>
     </div>
     <div class="panel-body">
-        <div class="alert alert-danger" ng-show="vm.error">
-            <span>{{vm.error}}</span>
-        </div>        
-        <div class="alert alert-success" ng-show="vm.info">
-            <span>{{vm.info}}</span>
-        </div>
+        <mensajes></mensajes>
         <div ng-form="vm.frmdetalle">
             <campo-formulario label="Número" name="numero" required="true" type="number" integer="true" ng-model="vm.decimo.numero" min="0"
                 max="99999" />
@@ -19,9 +14,8 @@
             />
         </div>
         <div>
-            <button class="btn btn-default" ng-click="vm.cancelar()">Cancelar</button>
-            <button class="btn btn-default" ng-click="vm.guardar()" ng-disabled="!vm.frmdetalle.$valid">Guardar</button>
+            <button class="btn btn-danger" ng-click="vm.cancelar()">Cancelar</button>
+            <button class="btn btn-primary" ng-click="vm.guardar()" ng-disabled="!vm.frmdetalle.$valid">Guardar</button>
         </div>
     </div>
 </div>
-{{vm.decimo | json}} {{!!frmdetalle.$valid}}

@@ -12,18 +12,20 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active">
-                    <a ng-if="vm.principal.isAuthenticated()" ui-sref="premios" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" >Premios
-                        <!--<span class="sr-only">(current)</span>-->
+                <li ui-sref-active="active">
+                    <a ng-if="vm.principal.isAuthenticated()" ui-sref="premios" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" >Premios                        
                     </a>
                 </li>
-                <li>
+                <li ui-sref-active="active">
                     <a ng-if="vm.principal.isAuthenticated()" ui-sref="misdecimos" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Mis décimos</a>
                 </li>
-                <li>
+                <li ui-sref-active="active">
+                    <a ng-if="vm.principal.isAuthenticated()" ui-sref="adminmisdecimos" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Administrar mis décimos</a>
+                </li>
+                <li ui-sref-active="active">
                     <a ng-if="!vm.principal.isAuthenticated()" ui-sref="login" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Login</a>
                 </li>
-                <li>
+                <li ui-sref-active="active">
                     <a ng-if="!vm.principal.isAuthenticated()" ui-sref="registro" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Registrarse</a>
                 </li>
                 <li ng-if="vm.principal.isAuthenticated()"><a ng-click="vm.salir()" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Desconectar</a></li>
@@ -32,3 +34,4 @@
         </div>
     </div>
 </nav>
+

@@ -12,7 +12,9 @@ function homeController($log,APP_CONFIG,$state,principal) {
         $onInit:$onInit,
         constantes:APP_CONFIG,
         $state:$state,
-        desconectar:desconectar
+        desconectar:desconectar,
+        principal:principal
+       
     });
 
 
@@ -21,6 +23,6 @@ function homeController($log,APP_CONFIG,$state,principal) {
     }
     function desconectar(){
         principal.removeToken();
-        $state.go("login");
+        $state.go("home");
     }
 }

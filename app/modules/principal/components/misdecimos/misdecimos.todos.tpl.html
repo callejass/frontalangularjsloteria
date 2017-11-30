@@ -11,11 +11,11 @@
         </div>
     </div>
 </div>
-
-<div>Todavía no has introducido información de ningún número de lotería.</div>
+<hr>
+<div ng-if="vm.decimos.length<1">Todavía no has introducido información de ningún décimo de lotería.</div>
 <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
-        <a class="btn btn-block btn-success" ui-sref="adminmisdecimos">Administrar mis números</a>
+        <a class="btn btn-block btn-default" ui-sref="adminmisdecimos">Administrar mis décimmos</a>
     </div>
 </div>
 

@@ -5,31 +5,26 @@
                 <h4>Login</h4>
             </div>
             <div class="panel-body">
-                <!-- <div bs-loading-overlay></div> -->
                 <ng-form name="loginform">
-                    <div class="alert alert-danger" ng-show="vm.loginincorrecto && vm.codigohttp==401">
-                        <span>Login incorrecto</span>
-                    </div>
-                    <div class="alert alert-danger" ng-show="vm.loginincorrecto && vm.codigohttp==-1">
-                        <span>Servicio de login no disponible</span>
-                    </div>
-                    <div class="alert alert-danger" ng-show="vm.loginincorrecto && vm.codigohttp!=-1 && vm.codigohttp!=401">
-                        <span>Error</span>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control center-block" name="usuario" ng-model="vm.usuario" placeholder="Usuario"
-                            required autocomplete="off"/>
+                    <mensajes></mensajes>
+                    
+                        <campo-formulario label="Usuario" name="usuario" required="true" type="text"  ng-model="vm.usuario" />
+                        <campo-formulario label="Password" name="password" required="true" type="password"  ng-model="vm.password" />
+                        <!-- <input type="text" class="form-control center-block" name="usuario" ng-model="vm.usuario" placeholder="Usuario" required
+                            autocomplete="off" />
+                        <span class="glyphicon glyphicon-exclamation-sign form-control-feedback" ng-if="loginform.usuario.$invalid && loginform.usuario.$dirty"></span>
+                        <span class="glyphicon glyphicon-ok form-control-feedback" ng-if="!loginform.usuario.$invalid && loginform.usuario.$dirty"></span>
                         <div role="alert">
-                            <span class="error" ng-show="loginform.usuario.$error.required && loginform.usuario.$dirty">El campo es obligatorio</span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control center-block" ng-model="vm.password" name="password" placeholder="password"
-                            required autocomplete="off"/>
+                            <span class="text-danger" ng-show="loginform.usuario.$error.required && loginform.usuario.$dirty">El campo es obligatorio</span>
+                        </div> -->
+                    
+                    <!-- <div class="form-group has-feedback">
+                        <input type="password" class="form-control center-block" ng-model="vm.password" name="password" placeholder="password" required
+                            autocomplete="off" />
                         <div role="alert">
-                            <span class="error" ng-show="loginform.password.$error.required && loginform.password.$dirty">El campo es obligatorio</span>
+                            <span class="text-danger" ng-show="loginform.password.$error.required && loginform.password.$dirty">El campo es obligatorio</span>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <button class="btn btn-primary center-block" ng-click="vm.dologin()" ng-disabled="!loginform.$valid">Entrar</button>
                     </div>

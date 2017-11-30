@@ -1,24 +1,18 @@
 angular.module("LotoApp.principal").component("adminmisdecimosdetalle", {
     bindings:{
-        decimo:"<decimoseleccionado"
+        decimoseleccionado:"<",
+        onSave:"&"
     },
     templateUrl: "modules/principal/components/misdecimos/admin/detalle.tpl.html",
     controllerAs: "vm",
-    controller: ["backoffice", "bsLoadingOverlayService","$log", adminMisdecimosDetalleController]
+    controller: ["backoffice", "bsLoadingOverlayService","$log","uiservice", adminMisdecimosDetalleController]
 });
 
-function adminMisdecimosDetalleController(backoffice, bsLoadingOverlayService,$log) {
+function adminMisdecimosDetalleController(backoffice, bsLoadingOverlayService,$log,uiservice) {
 
     var vm = this;
     angular.extend(vm, {        
-        /*decimo: {
-            numero:null,
-            importe:null,
-            descripcion:"",
-            _id:""
-        },*/
-        error:null,
-        info:null,
+        decimo: {},
         $onInit: $onInit,
         $onChanges:$onChanges,
         cancelar:cancelar,
@@ -30,10 +24,36 @@ function adminMisdecimosDetalleController(backoffice, bsLoadingOverlayService,$l
     }
     function $onChanges(cambios){
         //en el onchanges
-        $log.debug(JSON.stringify(cambios.decimo));
-        reset();        
+        $log.debug(cambios.isFirstChange);
+        if(!cambios.isFirstChange){
+            reset();
+            if(cambios.decimoseleccionado.currentValue){
+                loadDecimo(cambios.decimoseleccionado.currentValue._id);
+            }else{
+                vm.decimo={};
+            } 
+        }else{
+
+        }
+        /* $log.debug(JSON.stringify(cambios));
+        $log.debug(JSON.stringify(cambios.decimoseleccionado)); */
+
     }
 
+    function loadDecimo(id){
+        bsLoadingOverlayService.start();
+        backoffice.getDecimo(id).then(
+            function(response){
+                vm.decimo=response.data;
+            },
+            function(response){
+                vm.error=response.message;
+            }
+        )
+        .finally(function(){
+            bsLoadingOverlayService.stop();
+        });
+    }
     function cancelar(){
         vm.decimo=null;
         reset();
@@ -41,15 +61,40 @@ function adminMisdecimosDetalleController(backoffice, bsLoadingOverlayService,$l
     function reset(){        
         vm.error=null;
         vm.info=null;
-        vm.frmdetalle.$setPristine();
+        if(vm.frmdetalle){
+            vm.frmdetalle.$setPristine();
+        }
+        
         
     }
     function guardar(){
+        bsLoadingOverlayService.start();
         if(vm.decimo._id){
-            vm.info="Décimo modificado correctamente";
+            backoffice.updateDecimo(vm.decimo).then(
+                function(response){
+                    uiservice.showInfo("Décimo modificado correctamente");
+                    vm.onSave();
+                },
+                function(response){
+                    uiservice.showError(response);
+                }
+            ).finally(function(){
+                bsLoadingOverlayService.stop();
+            });
+            
             //llamamos a modificar
         }else{
-            vm.info="Décimo creado correctamente";
+            backoffice.createDecimo(vm.decimo).then(
+                function(response){
+                    uiservice.showInfo("Décimo creado correctament");
+                    vm.onSave();
+                },
+                function(response){
+                    uiservice.showError(response);
+                }
+            ).finally(function(){
+                bsLoadingOverlayService.stop();
+            });
             //llamamos a crear
         }
     }

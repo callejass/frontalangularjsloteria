@@ -1,28 +1,22 @@
 angular.module("LotoApp.principal").component("login", {
     bindings: {	        
     },
-    controller: ["$state", "backoffice", "principal","bsLoadingOverlayService",loginController],
+    controller: ["$state", "backoffice", "principal","uiservice",loginController],
     controllerAs: "vm",
     templateUrl:'/modules/principal/components/login/login.tpl.html'
 });
 
-function loginController($state, backoffice, principal,bsLoadingOverlayService) {
+function loginController($state, backoffice, principal,uiservice) {
 var vm = this;
 angular.extend(vm, {
     usuario: '',
     password: '',
     dologin: dologin,
-    setLocale:setLocale,
-    locale:'es',
-    codigohttp:''
 });
 
-function setLocale(loc){
-    //alert($translate.get)
-    $translate.use(loc);
-}
+
 function dologin() {        
-    bsLoadingOverlayService.start();
+    
     backoffice.sendLogin(vm.usuario, vm.password).then(
        function (response) {
         
@@ -31,18 +25,19 @@ function dologin() {
            //alert(JSON.stringify(data));
            //bsLoadingOverlayService.stop();
            //principal.authenticate({ Nombre: data.usuario, Password: data.password, AuthToken: data.token, Roles: ["Administrador", "User"] });
-           $state.go('premios');
+           $state.go('home');
            
        },
        function (response) {
+           uiservice.showError("Login incorrecto");
            //bsLoadingOverlayService.stop();             
-           vm.codigohttp=response.status;
-           vm.loginincorrecto=true;               
+           
+             
            //alert(error);
        }
     
     ).finally(function(){
-        bsLoadingOverlayService.stop();
+        //bsLoadingOverlayService.stop();
     });
 
 }

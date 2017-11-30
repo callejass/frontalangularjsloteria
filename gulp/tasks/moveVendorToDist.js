@@ -12,7 +12,9 @@ var ficheros = [
 	paths.vendor + "/angular-loading-overlay/dist/angular-loading-overlay.js",
 	paths.vendor + "/angular-loading-overlay-spinjs/dist/angular-loading-overlay-spinjs.js",
 	paths.vendor + "/angular-bootstrap/ui-bootstrap-tpls.min.js",
-	paths.vendor + "/angular-i18n/angular-locale_es-es.js"
+	paths.vendor + "/angular-i18n/angular-locale_es-es.js",
+	paths.vendor + "/angular-touch/angular-touch.min.js",
+	paths.vendor + "/angular-animate/angular-animate.min.js"
 ];
 gulp.task('moveVendorToDist', function () {
 	return gulp.src(ficheros, { base: "bower_components" })

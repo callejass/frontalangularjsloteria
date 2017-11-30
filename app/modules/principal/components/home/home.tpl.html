@@ -1,16 +1,11 @@
 
-<div class="jumbotron">
+<div class="jumbotron" ng-if="!vm.principal.isAuthenticated()">
   <h1 class="center">Navidad 2017</h1>
   <p>En esta aplicación podrás comprobar los premios principales del sorteo de Navidad 2017.</p>
   <p><a ui-sref="registro">Regístrate</a> o haz <a ui-sref="login">login</a> para poder añadir tus números y comprobarlos en directo durante al sorteo</p>
 </div>
-<!--<div class="row">
-  <div class="col-xs-12">
-    <div class="btn-group-vertical" role="group" aria-label="...">
-      <button class="btn btn-block btn-success" ng-click="vm.$state.go('login')" >Entrar</button>
-      <button class="btn btn-block btn-success" ng-click="vm.$state.go('premios')">Premios principales</button>
-      <button class="btn btn-block btn-success">Mis números</button>
-      <button class="btn btn-block btn-success" ng-click="vm.desconectar()">Desconectar</button>
-    </div>
-  </div>
-</div>-->
+<div class="jumbotron" ng-if="vm.principal.isAuthenticated()">
+  <h1 class="center">Navidad 2017</h1>
+  <p>Hola {{vm.principal.getUsername()}}. En esta aplicación podrás comprobar los <a ui-sref="premios">premios principales</a> del sorteo de Navidad 2017.</p>
+  <p>También puedes <a ui-sref="adminmisdecimos">guardar los números que juegas </a> para poder <a ui-sref="misdecimos">comprobarlos en directo</a> el día del sorteo</p>
+</div>

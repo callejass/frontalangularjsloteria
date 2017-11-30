@@ -11,9 +11,9 @@ function adminMisdecimosIndexController(backoffice, bsLoadingOverlayService) {
         decimos: [],
         error:null,
         $onInit: $onInit,
-        active:0,
-        decimoSeleccionado:decimoSeleccionado
-
+        fecha:null,
+        decimoSeleccionado:decimoSeleccionado,
+        actualizar:actualizar,
     })
     function $onInit(){
 
@@ -21,5 +21,8 @@ function adminMisdecimosIndexController(backoffice, bsLoadingOverlayService) {
     function decimoSeleccionado(value){
         
         vm.decimoseleccionado=value;
+    }
+    function actualizar(){
+        vm.fecha=Date.now();
     }
 }

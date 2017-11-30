@@ -5,28 +5,11 @@
                 <h4>Registro</h4>
             </div>
             <div class="panel-body">
+                    <mensajes></mensajes>
                 <!-- <div bs-loading-overlay></div> -->
                 <ng-form name="formulario">
-                    <div class="alert alert-danger" ng-if="vm.error">
-                        <span>{{vm.error}}</span>
-                    </div>
-                    <div class="alert alert-success" ng-if="vm.success">
-                            <span>{{vm.success}}</span>
-                        </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control center-block" name="usuario" ng-model="vm.usuario" placeholder="Usuario"
-                            required autocomplete="off"/>
-                        <div role="alert">
-                            <span class="error" ng-show="formulario.usuario.$error.required && formulario.usuario.$dirty">El campo es obligatorio</span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control center-block" ng-model="vm.password" name="password" placeholder="password"
-                            required autocomplete="off" />
-                        <div role="alert">
-                            <span class="error" ng-show="formulario.password.$error.required && formulario.password.$dirty">El campo es obligatorio</span>
-                        </div>
-                    </div>
+                    <campo-formulario label="Usuario" name="usuario" required="true" type="text" ng-model="vm.usuario" />
+                    <campo-formulario label="Password" name="password" required="true" type="password" ng-model="vm.password" />
                     <div class="form-group">
                         <button class="btn btn-primary center-block" ng-click="vm.registrar()" ng-disabled="!formulario.$valid">Registrarme</button>
                     </div>

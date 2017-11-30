@@ -1,14 +1,17 @@
-
-        <div class="decimo">
-            <img class="img-responsive" ng-src="{{vm.url}}" />
-            <span class="numerojugado">{{vm.inputdata.numero}}</span>
-            <span class="importejugado">{{vm.inputdata.importe}}</span>
-            <!-- <span class="descripcionjugado">{{vm.inputdata.descripcion}}</span> -->
-            <button class="botoncomprobarpremio" ng-click="vm.comprobar()"></button>
-            <span ng-if="vm.premio>0" class="premiojugado">{{vm.premio | currency}}</span>
-        </div>
-    </div>
+<h4 class="alert" ng-class="{'alert-success':vm.premio>0, 'alert-info':vm.premio==0}">{{vm.inputdata.descripcion}}</h4>
+<div class="decimo">
+    <img class="img-responsive" ng-src="{{vm.url}}" />
+    <span class="numerojugado">{{vm.inputdata.numero}}</span>
+    <span class="importejugado">{{vm.inputdata.importe}}</span>
+    <!-- <span class="descripcionjugado">{{vm.inputdata.descripcion}}</span> -->
+    <button class="botoncomprobarpremio" ng-click="vm.comprobar()"></button>
+    <!-- <span ng-if="vm.premio>0" class="premiojugado">{{vm.premio | currency}}</span> -->
 </div>
+<h4 class="alert alert-info">
+    <span ng-if="vm.premio>0">{{vm.premio | currency}}</span>
+    <span ng-if="vm.premio==0">Sin premio</span>
+</h4>
+
 
 
 <!-- <p ng-repeat="decimo in vm.decimos">
