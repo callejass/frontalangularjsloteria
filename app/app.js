@@ -19,9 +19,15 @@ angular.module('LotoApp').config(["$stateProvider", "$urlRouterProvider", functi
         //templateUrl: path + 'login/loginview.html',
     });
     $stateProvider.state('misdecimos', {
-        data: { needautentication: false },
+        data: { needautentication: true },
         url: "/misdecimos",
         component: "misdecimos"
+        //templateUrl: path + 'login/loginview.html',
+    });
+    $stateProvider.state('otrosdecimos', {
+        data: { needautentication: true },
+        url: "/otrosdecimos",
+        component: "otrosdecimos"
         //templateUrl: path + 'login/loginview.html',
     });
 
@@ -31,12 +37,20 @@ angular.module('LotoApp').config(["$stateProvider", "$urlRouterProvider", functi
         component: "adminmisdecimos"
         //templateUrl: path + 'login/loginview.html',
     });
+    $stateProvider.state('loginr', {
+        data: { needautentication: false },
+        url: "/login/:r",
+        component: "login"
+        //templateUrl: path + 'login/loginview.html',
+    });
     $stateProvider.state('login', {
+        data: { needautentication: false },
         url: "/login",
         component: "login"
         //templateUrl: path + 'login/loginview.html',
     });
     $stateProvider.state('registro', {
+        data: { needautentication: false },
         url: "/registro",
         component: "registro"
         //templateUrl: path + 'login/loginview.html',
@@ -83,7 +97,16 @@ angular.module('LotoApp').run(["$transitions", "$state", "$log", "principal", "b
         bsLoadingOverlayService.stop();
     }, 300); */
 
-    $transitions.onSuccess({ to: "premios" }, function (transition) {
+    $transitions.onBefore({},function(transition){
+        
+       
+        if(transition.to().data && transition.to().data.needautentication && !principal.isAuthenticated()){
+            
+            return transition.router.stateService.target('loginr',{"r":transition.to().name});
+        }
+    });
+
+    /* $transitions.onSuccess({ to: "premios" }, function (transition) {
         if (!principal.isAuthenticated()) {
             return transition.router.stateService.go('login');
         } else {
@@ -93,7 +116,7 @@ angular.module('LotoApp').run(["$transitions", "$state", "$log", "principal", "b
             );
         }
 
-    });
+    }); */
     
     if (!principal.isAuthenticated()) {
        

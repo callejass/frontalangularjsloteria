@@ -23,12 +23,15 @@
                     <a ng-if="vm.principal.isAuthenticated()" ui-sref="adminmisdecimos" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Administrar mis décimos</a>
                 </li>
                 <li ui-sref-active="active">
+                    <a ng-if="vm.principal.isAuthenticated()" ui-sref="otrosdecimos" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Otros décimos</a>
+                </li>
+                <li ui-sref-active="active">
                     <a ng-if="!vm.principal.isAuthenticated()" ui-sref="login" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Login</a>
                 </li>
                 <li ui-sref-active="active">
                     <a ng-if="!vm.principal.isAuthenticated()" ui-sref="registro" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Registrarse</a>
                 </li>
-                <li ng-if="vm.principal.isAuthenticated()"><a ng-click="vm.salir()" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Desconectar</a></li>
+                <li ng-if="vm.principal.isAuthenticated()"><a role="button" ng-click="vm.salir()" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Desconectar</a></li>
 
             </ul>
         </div>

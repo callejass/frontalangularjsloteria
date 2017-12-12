@@ -10,6 +10,7 @@ angular.module("LotoApp.principal").component("adminmisdecimosdetalle", {
 
 function adminMisdecimosDetalleController(backoffice, bsLoadingOverlayService,$log,uiservice) {
 
+    var inicializado=false;
     var vm = this;
     angular.extend(vm, {        
         decimo: {},
@@ -20,12 +21,13 @@ function adminMisdecimosDetalleController(backoffice, bsLoadingOverlayService,$l
 
     });
     function $onInit(){
-
+        inicializado=true;
     }
     function $onChanges(cambios){
         //en el onchanges
-        $log.debug(cambios.isFirstChange);
-        if(!cambios.isFirstChange){
+        
+        
+        if(inicializado){
             reset();
             if(cambios.decimoseleccionado.currentValue){
                 loadDecimo(cambios.decimoseleccionado.currentValue._id);
@@ -61,6 +63,7 @@ function adminMisdecimosDetalleController(backoffice, bsLoadingOverlayService,$l
     function reset(){        
         vm.error=null;
         vm.info=null;
+        vm.decimo={};
         if(vm.frmdetalle){
             vm.frmdetalle.$setPristine();
         }
@@ -87,6 +90,7 @@ function adminMisdecimosDetalleController(backoffice, bsLoadingOverlayService,$l
             backoffice.createDecimo(vm.decimo).then(
                 function(response){
                     uiservice.showInfo("Décimo creado correctament");
+                    reset();
                     vm.onSave();
                 },
                 function(response){

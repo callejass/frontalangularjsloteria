@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div ng-form="vm.frmdetalle">
+            <campo-formulario label="Número" name="numero" required="true" type="number" integer="true" ng-model="vm.numero" min="0"
+                max="99999"></campo-formulario>
+        </div>
+        <div class="button-block">
+            <button class="btn btn-primary btn-block" ng-click="vm.comprobar()">Comprobar</button>
+        </div>
+    </div>
+</div>
+<br/>
+<div class="row" ng-if="vm.decimos.length">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div uib-carousel active="vm.active" interval="6000" no-pause="true">
+            <div uib-slide ng-repeat="decimo in vm.decimos track by $index" index="$index">
+                <decimo inputdata="decimo" indice="$index" ng-swipe-left="vm.izquierda()" ng-swipe-right="vm.derecha()"></decimo>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<div class="row" ng-if="vm.decimos.length">
+    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="button-block">
+            <button class="btn btn-primary btn-block" ng-click="vm.limpiar()">Limpiar</button>
+        </div>
+    </div>
+</div>

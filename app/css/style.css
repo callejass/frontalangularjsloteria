@@ -18,6 +18,7 @@ body {
   background-color: #f5f5f5;
 }
 
+
 .row{
   padding-top:0px;
   margin-top:0px;
@@ -33,6 +34,57 @@ h1{
   margin-top:0px;
   font-size:20px;
 }
+
+.jumbotron{
+  background:linear-gradient(to bottom,#feefc6,#fff);
+}
+.panel .panel-heading{
+  background:#feefc6;
+  background: linear-gradient(to bottom,#feefc6,#fff);
+}
+.alert.alert-info{
+  background:#feefc6;
+  background: linear-gradient(to top,#feefc6,#fff);
+  border:none;
+}
+
+.btn.btn-primary{
+  background:#feefc6;
+  background: linear-gradient(to bottom,#feefc6,#fff);
+  border-color:#feefc6;
+  color:#31708f;
+}
+
+.label.label-primary{
+  background:#feefc6;
+  /* background: linear-gradient(to bottom,#feefc6,#fff); */
+  border-color:#feefc6;
+  color:#31708f;
+}
+
+.navbar-default{
+  background: #be911c;
+}
+.navbar-default .navbar-brand,.navbar-default .navbar-brand:focus,.navbar-default .navbar-brand:hover{
+  color:#feefc6;
+  text-transform: uppercase;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #feefc6;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+  background:#feefc6;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover, .navbar-default .navbar-togle.collapsed:hover{
+  background-color:#feefc6;
+}
+
+/*Hasta aquí la personalización de bootstrap*/
+
+
 .premionivel1{
   font-size:30px;
 }
@@ -50,10 +102,13 @@ h1{
 }
 
 
-
+.infodecimo{
+  margin:0px;
+}
 .decimo{
   position:relative;
 }
+
 .numerojugado{
   margin:0px;
   padding:0px;
@@ -71,8 +126,8 @@ h1{
   margin:0px;
   padding:0px;
   position:absolute;
-  bottom:10%;
-  left:84%;
+  bottom:27%;
+  left:81%;
   width:15%;
   font-size:20px;
   font-weight: bolder;

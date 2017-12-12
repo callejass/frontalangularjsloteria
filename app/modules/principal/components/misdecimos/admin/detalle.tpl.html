@@ -7,15 +7,13 @@
         <mensajes></mensajes>
         <div ng-form="vm.frmdetalle">
             <campo-formulario label="Número" name="numero" required="true" type="number" integer="true" ng-model="vm.decimo.numero" min="0"
-                max="99999" />
-            <campo-formulario label="Importe" name="importe" required="true" type="number" ng-model="vm.decimo.importe" min="0" max="1000"
-            />
-            <campo-formulario label="Descripción" name="descripcion" type="text"  maxlength="50" ng-model="vm.decimo.descripcion"
-            />
+                max="99999"></campo-formulario>
+            <campo-formulario label="Importe" name="importe" required="true" type="number" ng-model="vm.decimo.importe" min="0" max="1000"></campo-formulario>
+            <campo-formulario label="Descripción" name="descripcion" type="text" maxlength="50" ng-model="vm.decimo.descripcion"></campo-formulario>
         </div>
-        <div>
-            <button class="btn btn-danger" ng-click="vm.cancelar()">Cancelar</button>
-            <button class="btn btn-primary" ng-click="vm.guardar()" ng-disabled="!vm.frmdetalle.$valid">Guardar</button>
+        <div class="button-group">
+            <button class="btn btn-primary " ng-click="vm.cancelar()">Cancelar</button>
+            <button class="btn btn-primary " ng-click="vm.guardar()" ng-disabled="!vm.frmdetalle.$valid">Guardar</button>
         </div>
     </div>
 </div>

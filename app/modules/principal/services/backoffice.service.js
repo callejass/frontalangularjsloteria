@@ -1,4 +1,4 @@
-angular.module("LotoApp.principal").service("backoffice", ["APP_CONFIG", "$http","$q", function (configuracion, $http,$q) {
+angular.module("LotoApp.principal").service("backoffice", ["APP_CONFIG", "$http","$q","$log", function (configuracion, $http,$q,$log) {
 
     var servicio = this;
     angular.extend(servicio, {
@@ -21,8 +21,8 @@ angular.module("LotoApp.principal").service("backoffice", ["APP_CONFIG", "$http"
         var url1 = configuracion.servicesUrl + "/consultas/estado";
         var url2= configuracion.servicesUrl + "/consultas/ultimaactualizacion";
         var promesas=[];
-        promesas.push($http.get(url1, { cache: true }));
-        promesas.push($http.get(url2, { cache: true }));
+        promesas.push($http.get(url1, { cache: false }));
+        promesas.push($http.get(url2, { cache: false }));
         var deferred = $q.defer();
         $q.all(promesas).then(
             function(values){
@@ -51,7 +51,8 @@ angular.module("LotoApp.principal").service("backoffice", ["APP_CONFIG", "$http"
     /**Recupera el posible premio para un número en concreto */
     function getPremio(numero){
         var url = configuracion.servicesUrl + "/consultas/" + numero;
-        return $http.get(url, { cache: true });
+      // $log.debug(url);
+        return $http.get(url, { cache: false });
     }
     function getDecimos(){
         var url=configuracion.servicesUrl + "/jugadas";

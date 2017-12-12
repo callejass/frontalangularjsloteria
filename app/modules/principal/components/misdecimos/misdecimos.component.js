@@ -30,8 +30,7 @@ function misdecimosController(backoffice, bsLoadingOverlayService) {
             function (response) {
                 vm.decimos = response.data;
             },
-            function (response) {
-                
+            function (response) {                
                 vm.error=response.data;
             }
         ).finally(function () { bsLoadingOverlayService.stop() });
